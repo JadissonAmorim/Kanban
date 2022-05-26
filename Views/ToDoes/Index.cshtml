@@ -1,0 +1,170 @@
+﻿@model IEnumerable<KanbanProject.Models.ToDo>
+
+
+<head>
+    <title>Kanban</title>
+</head>
+
+<form asp-action="Index" method="post">
+    <label>Atividade: </label>
+    <input type="text" name="Pedro" require />  
+    <input type="submit" id="hehe" value="Adicionar" />
+
+</form>
+<h1>@ViewBag.Pedro</h1>
+<div class="div1">
+    <table>
+        <thead>
+            <tr>
+                <th colspan="2" align="center">
+                    @Html.DisplayNameFor(model => model.Resquested)
+                </th>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                if (item.Resquested != null)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Resquested)
+                        </td>
+
+                        <td class="tdoptions">
+                            <a asp-action="Edit" asp-route-id="@item.Id"><input type="button" id="hehe" value="Editar"></a>
+
+                            <form asp-controller="Produtoes" asp-action="Index" method="post">
+                                <input type="text" name="Fazendo" value="5" hidden>
+                                <input asp-route-id="@item.Id" type="submit" id="hehe" value="Excluir">
+
+                            </form>
+                            <form asp-controller="Produtoes" asp-action="Index" method="post">
+                                <input type="text" name="Fazendo" value="1" hidden>
+                                <input asp-route-id="@item.Id" type="submit" id="hehe" value="Avançar">
+
+                            </form>
+                        </td>
+                    </tr>
+
+                }
+            }
+        </tbody>
+    </table>
+
+    <table>
+        <thead>
+            <tr>
+                <th colspan="2" align="center">
+                    @Html.DisplayNameFor(model => model.Inprogress)
+                </th>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                if (item.Inprogress != null)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Inprogress)
+                        <td class="tdoptions">
+                            <a asp-action="Edit" asp-route-id="@item.Id"><input type="button" id="hehe" value="Editar"></a> 
+                            <form asp-controller="Produtoes" asp-action="Index" method="post">
+                                <input type="text" name="Fazendo" value="5" hidden>
+                                <input asp-route-id="@item.Id" type="submit" id="hehe" value="Excluir">
+                            </form>
+                            <form asp-controller="Produtoes" asp-action="Index" method="post">
+                                <input type="text" name="Fazendo" value="2" hidden>
+                                <input asp-route-id="@item.Id" type="submit" id="hehe" value="Avança">
+                            </form>
+                            <form asp-controller="Produtoes" asp-action="Index" method="post">
+                                <input type="text" name="Fazendo" value="3" hidden>
+                                <input asp-route-id="@item.Id" type="submit" id="hehe" value="Retornar">
+
+                            </form>
+                            </td>
+                        </td>
+                    </tr>
+
+                }
+            }
+        </tbody>
+    </table>
+
+    <table>
+        <thead>
+            <tr>
+                <th colspan="2" align="center">
+                    @Html.DisplayNameFor(model => model.Done)
+                </th>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                if (item.Done != null)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Done)
+                            <td class="tdoptions"> 
+                            <a asp-action="Edit" asp-route-id="@item.Id"><input type="button" id="hehe" value="Editar"></a>
+                            <form asp-controller="Produtoes" asp-action="Index" method="post">
+                                <input type="text" name="Fazendo" value="5" hidden>
+                                <input asp-route-id="@item.Id" type="submit" id="hehe" value="Excluir">
+
+                            </form>
+                            <form asp-controller="Produtoes" asp-action="Index" method="post">
+                                <input type="text" name="Fazendo" value="4" hidden>
+                                <input asp-route-id="@item.Id" type="submit" id="hehe" value="Retornar">
+
+                            </form>
+                            </td>
+                        </td>
+                    </tr>
+
+                }
+            }
+        </tbody>
+    </table>
+</div>
+<style>
+        .div1 {
+        display: flex;
+    }
+
+    table {
+        border: 2px solid #000;
+        width: 300px;
+        height: 60px;
+        caption-side: bottom;
+        color: #666;
+        text-align: center;
+        letter-spacing: 1px;
+        margin: 20px
+    }
+
+    td {
+        border: 2px solid black;
+        height: 10px;
+    }
+    .tdoptions{
+        width: 100px;
+    }
+#hehe {
+  height: 25px;
+  width: 100px;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  color: #000;
+  background-color: #DCDCDC;
+  border: 1px solid black;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+
+#hehe:hover {
+  color: #D80000 ;
+}
+
+</style>
